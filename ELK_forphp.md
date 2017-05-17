@@ -19,8 +19,9 @@
     解决办法：vim config/elasticsearch.yml
 
     增加：network.host: 0.0.0.0
+    增加：http.cors.allow-origin: "/.*/"
+    增加：http.cors.enabled: true
 
-    重启问题解决
     
     切换root账户 vim /etc/sysctl.conf
     增加一行  vm.max_map_count=655360
