@@ -1,4 +1,7 @@
-# 1、elasticsearch安装
+
+
+
+# 一、elasticsearch安装
 
     wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.0.zip
     unzip elasticsearch-5.4.0.zip
@@ -48,3 +51,16 @@
     -Xms2g
     -Xmx2g
 
+# 二、Logstash 安装
+    
+    wget https://artifacts.elastic.co/downloads/logstash/logstash-5.4.0.tar.gz
+
+
+
+
+
+
+
+
+
+参考：http://www.sojson.com/blog/85.html
