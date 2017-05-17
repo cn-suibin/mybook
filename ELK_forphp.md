@@ -66,10 +66,11 @@
     
     http://localhost:9100/
 
-# 二、Logstash 安装
+# 二、filebeat 安装
     
-    wget https://artifacts.elastic.co/downloads/logstash/logstash-5.4.0.tar.gz
-
+    wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.4.0-linux-x86_64.tar.gz
+    cd filebeat-5.4.0-linux-x86_64
+    sudo ./filebeat -e -c filebeat.yml
 
 
 
