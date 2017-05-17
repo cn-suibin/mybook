@@ -10,7 +10,7 @@
     
     chown -R elk:elk elasticsearch-5.4.0
     sudo su elk
-    ./bin/elasticsearch 
+    ./bin/elasticsearch -d
     
     netstat -ant |grep 9200  //查看端口存在说明启动成功
     
@@ -61,7 +61,7 @@
 
     npm install
 
-    npm run start
+    npm run start &
     
     http://localhost:9100/
 
