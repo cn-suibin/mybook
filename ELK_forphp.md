@@ -28,3 +28,7 @@
     root hard nofile 65536
     * soft nofile 65536
     * hard nofile 65536
+    
+    修改 /etc/security/limits.d/90-nproc.conf 
+    *          soft    nproc     unlimited
+    root       soft    nproc     unlimited
