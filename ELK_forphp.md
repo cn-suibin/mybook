@@ -13,6 +13,12 @@
     ./bin/elasticsearch 
     
     netstat -ant |grep 9200  //查看端口存在说明启动成功
+    
+    //安装集群监控器
+    
+    从https://github.com/mobz/elasticsearch-head下载ZIP包。
+     git clone https://github.com/mobz/elasticsearch-head.git  
+    在 elasticsearch  目录下创建目录/plugins/head/_site 并且将刚刚解压的elasticsearch-head-master目录下所有内容COPY到当前创建   的/plugins/head/_site/目录下即可。
 
 #  1.1配置参数解决外网无法访问
     解决办法：vim config/elasticsearch.yml
