@@ -18,7 +18,18 @@
     
     从https://github.com/mobz/elasticsearch-head下载ZIP包。
      git clone https://github.com/mobz/elasticsearch-head.git  
-    在 elasticsearch  目录下创建目录/plugins/head/_site 并且将刚刚解压的elasticsearch-head-master目录下所有内容COPY到当前创建   的/plugins/head/_site/目录下即可。
+
+    cd elasticsearch-head
+
+    npm install
+
+    elasticsearch/bin/plugin install mobz/elasticsearch-head
+    
+    在elasticsearch-head目录下node_modules/grunt下如果没有grunt二进制程序，需要执行
+
+    cd elasticsearch-head
+
+    npm install grunt --save
 
 #  1.1配置参数解决外网无法访问
     解决办法：vim config/elasticsearch.yml
