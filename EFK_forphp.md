@@ -76,7 +76,12 @@
 # 三、kibana 安装
     https://artifacts.elastic.co/downloads/kibana/kibana-5.4.0-linux-x86_64.tar.gz
     cd kibana-5.4.0-linux-x86_64
-    
+    vi config/kibana.yml
+    确保存在：
+    server.host: "0.0.0.0"
+    elasticsearch.url: "http://localhost:9200"
+    然后启动
+    ./bin/kibana
 
 
 
