@@ -24,7 +24,7 @@
 # 解除linux系统的最大进程数和最大文件打开数限制
     vi /etc/security/limits.conf
     确保：
-    root soft nofile 65536
+    root soft nofile 65536
     root hard nofile 65536
     * soft nofile 65536
     * hard nofile 65536
