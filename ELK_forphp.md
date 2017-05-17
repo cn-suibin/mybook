@@ -7,7 +7,9 @@
     
     chown -R elk:elk elasticsearch-5.4.0
     sudo su elk
-    ./bin/elasticsearch -Xmx1g -Xms1g
+    ./bin/elasticsearch 
+    
+    netstat -ant |grep 9200  //查看端口存在说明启动成功
 
 #  1.1配置参数解决外网无法访问
     解决办法：vim config/elasticsearch.yml
@@ -39,3 +41,10 @@
     在elasticsearch.yml中配置bootstrap.system_call_filter为false，注意要在Memory下面:
     bootstrap.memory_lock: false
     bootstrap.system_call_filter: false
+
+# 1.4修改虚拟机内存
+
+    vim config/jvm.options 
+    -Xms2g
+    -Xmx2g
+
