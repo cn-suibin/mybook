@@ -32,3 +32,10 @@
     修改 /etc/security/limits.d/90-nproc.conf 
     *          soft    nproc     unlimited
     root       soft    nproc     unlimited
+
+# 因为Centos6不支持SecComp，关闭
+
+    解决：
+    在elasticsearch.yml中配置bootstrap.system_call_filter为false，注意要在Memory下面:
+    bootstrap.memory_lock: false
+    bootstrap.system_call_filter: false
