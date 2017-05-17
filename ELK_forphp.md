@@ -14,22 +14,6 @@
     
     netstat -ant |grep 9200  //查看端口存在说明启动成功
     
-    //安装集群监控器
-    
-    从https://github.com/mobz/elasticsearch-head下载ZIP包。
-     git clone https://github.com/mobz/elasticsearch-head.git  
-
-    cd elasticsearch-head
-
-    npm install
-
-    elasticsearch/bin/plugin install mobz/elasticsearch-head
-    
-    在elasticsearch-head目录下node_modules/grunt下如果没有grunt二进制程序，需要执行
-
-    cd elasticsearch-head
-
-    npm install grunt --save
 
 #  1.1配置参数解决外网无法访问
     解决办法：vim config/elasticsearch.yml
@@ -67,6 +51,19 @@
     vim config/jvm.options 
     -Xms2g
     -Xmx2g
+    
+#  1.5安装集群监控器
+    
+    从https://github.com/mobz/elasticsearch-head下载ZIP包。
+     git clone https://github.com/mobz/elasticsearch-head.git  
+
+    cd elasticsearch-head
+
+    npm install
+
+    npm run start
+    
+    http://localhost:9100/
 
 # 二、Logstash 安装
     
