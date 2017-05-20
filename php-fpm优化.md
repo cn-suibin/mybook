@@ -135,3 +135,42 @@ pm.max_requests = 1000
 3,php-fpm的慢日志，debug及异常排查神器：
 request_slowlog_timeout设置一个超时的参数，slowlog设置慢日志的存放位置，tail -f /var/log/www.slow.log即可看到执行过慢的php过程。
 大家可以看到经常出现的网络读取超过、Mysql查询过慢的问题，根据提示信息再排查问题就有很明确的方向了。
+
+
+
+      [global]
+      pid = /usr/local/php/var/run/php-fpm.pid
+      error_log = /usr/local/php/var/log/php-fpm.log
+      log_level = notice
+
+      [www]
+      listen = /tmp/php-cgi.sock
+      listen.backlog = -1
+      listen.allowed_clients = 127.0.0.1
+      listen.owner = www
+      listen.group = www
+      listen.mode = 0666
+      user = www
+      group = www
+      pm = dynamic
+      pm.max_children = 20
+      pm.start_servers = 10
+      pm.min_spare_servers = 10
+      pm.max_spare_servers = 20
+      request_terminate_timeout = 100
+      request_slowlog_timeout = 5
+      slowlog = var/log/slow.log
+
+
+      catch_workers_output = 1
+      php_flag[display_errors] = off
+      php_admin_value[error_log] = var/log/fpm-php.www.log
+      php_admin_flag[log_errors] = on
+      php_admin_value[memory_limit] = 32M
+      php.ini
+
+      [PHP]
+      error_reporting = E_ALL & ~E_NOTICE
+      display_errors = Off
+      log_errors = On
+      error_log = "/usr/local/php/var/log/error_log"
