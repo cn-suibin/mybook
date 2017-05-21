@@ -3,24 +3,19 @@
 
           一般情况下：GET/POST
 
-          1
-          2
+
           $this->request->get(参数);
           $this->request->getPost("参数")
 
 
           route下：
 
-          1
+
           this->dispatcher->getParam("参数");
 
 
           session:
 
-          1
-          2
-          3
-          4
           $this->session->get("参数");
 
           //设置：
