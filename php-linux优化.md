@@ -1,5 +1,5 @@
 =======================================================
-`
+```
 nginx 优化
 
 worker_processes  auto;
@@ -17,7 +17,7 @@ events {
     multi_accept on;
     use epoll;
 }
-`
+```
 
 
 
