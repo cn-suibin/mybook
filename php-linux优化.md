@@ -3,6 +3,9 @@
 
 ==================================================
 
+ulimit -n
+
+
 vi /etc/security/limits.conf
 
 * soft nproc 65535
