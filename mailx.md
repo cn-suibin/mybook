@@ -21,3 +21,7 @@ certutil -A -n "GeoTrust Global CA" -t "C,," -d ~/.certs -i ~/.certs/qq.crt
 certutil -L -d /root/.certs
 certutil -A -n "GeoTrust SSL CA - G3" -t "Pu,Pu,Pu"  -d ./ -i qq.crt 
 ```
+*QQ stmp发送邮件配置mailx-发送方法*
+```
+echo "1111wwww11111111111" | mail -s "hello" 157595075@qq.com
+```
