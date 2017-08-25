@@ -1,3 +1,4 @@
+```
 # Example MySQL config file for large systems.
 #
 # This is for a large system with memory = 512M where the system runs mainly
@@ -168,3 +169,4 @@ write_buffer = 2M
 
 [mysqlhotcopy]
 interactive-timeout
+```
