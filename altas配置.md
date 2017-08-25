@@ -1,4 +1,7 @@
 ```
+https://github.com/Qihoo360/Atlas/wiki/Atlas%E7%9A%84%E5%AE%89%E8%A3%85
+```
+```
 [mysql-proxy]
 
 #带#号的为非必需的配置项目
