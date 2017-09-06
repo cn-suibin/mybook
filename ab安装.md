@@ -7,7 +7,7 @@ ab运行需要依赖apr-util包，安装命令为：
  
 
 yum install apr-util
-
+yum install httpd-tools
 
 简单使用说明
 1. 最基本的关心两个选项 -c -n
