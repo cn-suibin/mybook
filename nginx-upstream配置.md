@@ -1,4 +1,5 @@
-   upstream backend{
+  ```
+  upstream backend{
         server 192.168.248.243:8091;
  #       server 192.168.248.243:8091 weight=2;
    }
@@ -42,3 +43,4 @@
 
         }
     }
+    ```
