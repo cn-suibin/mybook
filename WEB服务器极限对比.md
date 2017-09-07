@@ -4,6 +4,8 @@
 4G内存
 PHP7.1
 JAVA1.8
+ulimit 65535
+use epoll
 ```
 ## spring cloud 单机1万
 ![image](https://github.com/cn-suibin/mybook/blob/master/springcloud-1w.png)
