@@ -32,3 +32,143 @@ http://blog.csdn.net/plunger2011/article/details/37812843
    
         3.2 流量管理、自动降级服务、健全高可用。
    
+```
+解决：
+禁止slowlog
+1
+2
+3
+vim php-fpm.conf
+;request_slowlog_timeout = 10s
+;slowlog = /usr/local/log/php-fpm/ckl-slow.log
+修改最大执行时间：
+1
+2
+vim php.ini
+max_execution_time = 60
+重启进程：
+1
+/etc/init.d/php-fpm reload
+等待一段时间，发现一切正常。
+查看TCP连接相关：
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+# ss -s
+Total: 287 (kernel 380)
+TCP:   597 (estab 122, closed 563, orphaned 0, synrecv 0, timewait 5630/0), ports 577
+ 
+Transport Total     IP        IPv6
+*         380       -         -        
+RAW       0         0         0        
+UDP       1         1         0        
+TCP       34        34        0        
+INET      35        35        0        
+FRAG      0         0         0
+同时发现系统TIMEWAIT 较多，所以优化了一些内核相关参数
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+# sysct -p
+bash: sysct: command not found
+[root@sapi etc]# sysctl -p
+net.ipv4.ip_forward = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.tcp_max_tw_buckets = 6000
+net.ipv4.ip_local_port_range = 1024 65000
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_max_orphans = 262144
+net.ipv4.tcp_keepalive_time = 1200
+net.ipv4.tcp_keepalive_intvl = 30
+net.ipv4.tcp_keepalive_probes = 3
+net.ipv4.tcp_synack_retries = 1
+net.ipv4.tcp_syn_retries = 2
+net.ipv4.tcp_max_orphans = 262144
+net.ipv4.tcp_max_syn_backlog = 262144
+net.ipv4.tcp_timestamps = 0
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 87380 4194304
+net.ipv4.tcp_wmem = 4096 16384 4194304
+net.core.wmem_default = 8388608
+net.core.rmem_default = 8388608
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.core.somaxconn = 262144
+kernel.sysrq = 0
+kernel.core_uses_pid = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.shmmax = 68719476736
+kernel.shmall = 4294967296
+vm.swappiness = 0
+fs.file-max = 409600
+过一阵再查看：
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+# ss -s
+Total: 281 (kernel 362)
+TCP:   520 (estab 22, closed 493, orphaned 0, synrecv 0, timewait 493/0), ports 475
+ 
+Transport Total     IP        IPv6
+*         362       -         -        
+RAW       0         0         0        
+UDP       1         1         0        
+TCP       27        27        0        
+INET      28        28        0        
+FRAG      0         0         0
+```
