@@ -35,33 +35,20 @@ http://blog.csdn.net/plunger2011/article/details/37812843
 ```
 解决：
 禁止slowlog
-1
-2
-3
+
 vim php-fpm.conf
 ;request_slowlog_timeout = 10s
 ;slowlog = /usr/local/log/php-fpm/ckl-slow.log
 修改最大执行时间：
-1
-2
+
 vim php.ini
 max_execution_time = 60
 重启进程：
-1
+
 /etc/init.d/php-fpm reload
 等待一段时间，发现一切正常。
 查看TCP连接相关：
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+
 # ss -s
 Total: 287 (kernel 380)
 TCP:   597 (estab 122, closed 563, orphaned 0, synrecv 0, timewait 5630/0), ports 577
@@ -74,43 +61,7 @@ TCP       34        34        0
 INET      35        35        0        
 FRAG      0         0         0
 同时发现系统TIMEWAIT 较多，所以优化了一些内核相关参数
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
+
 # sysct -p
 bash: sysct: command not found
 [root@sapi etc]# sysctl -p
@@ -149,17 +100,7 @@ kernel.shmall = 4294967296
 vm.swappiness = 0
 fs.file-max = 409600
 过一阵再查看：
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+
 # ss -s
 Total: 281 (kernel 362)
 TCP:   520 (estab 22, closed 493, orphaned 0, synrecv 0, timewait 493/0), ports 475
