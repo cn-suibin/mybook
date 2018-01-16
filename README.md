@@ -3,6 +3,7 @@
 Apache BookKeeper
 http://blog.csdn.net/plunger2011/article/details/37812843
 
+http://www.4wei.cn/archives/category/linux
 
 1、用好thinkphp框架自带的。
 
